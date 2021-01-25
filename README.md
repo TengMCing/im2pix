@@ -10,7 +10,8 @@
 
 im2pix is a tool to convert image to pseudo pixel art in R. It’s a
 reduced version of [Nathan Harper’s Python
-script](https://github.com/nathanharper/phixelgator).
+script](https://github.com/nathanharper/phixelgator). The author of this
+package do not own the copyright of this algorithm.
 
 ## Installation
 

@@ -32,8 +32,8 @@ NULL
 #' @param pal character; colour palette used in matching.
 #'
 #' @examples
-#' im <- sample_im
-#' imtopix(im, pal = "appleii")
+#' # im <- sample_im
+#' # imtopix(im, pal = "appleii")
 #'
 #' @export
 imtopix <- function(im,

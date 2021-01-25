@@ -41,7 +41,7 @@ time, please use Nathan Harper's original script written in Python
 }
 
 \examples{
-im <- sample_im
-imtopix(im, pal = "appleii")
+# im <- sample_im
+# imtopix(im, pal = "appleii")
 
 }
