@@ -1,0 +1,76 @@
+ori_pic <- imager::load.image("test/test.jpg")
+
+im2pix <- function(ori_pic, pal = "appleii", blockSize = 4) {
+  
+  if (!is.cimg(ori_pic)) stop("Only accept cimg object.")
+  
+  width <- dim(ori_pic)[1]
+  height <- dim(ori_pic)[2]
+  
+  x_start <- seq(1, width, blockSize)
+  x_start <- x_start[x_start <= width]
+  x_end <- x_start + blockSize - 1
+  x_end[x_end > width] <- width
+  
+  y_start <- seq(1, height, blockSize)
+  y_start <- y_start[y_start <= height]
+  y_end <- y_start + blockSize - 1
+  y_end[y_end > height] <- height
+  
+  finmat <- matrix(rep(0, 3 * length(x_start) * length(y_start)), ncol = 3)
+  finim <- array(rep(0, width * height * 3), dim = c(width, height, 3))
+  
+  for (i in 1:length(x_start)) {
+    for (j in 1:length(y_start)) {
+      
+      subim <- ori_pic[x_start[i]:x_end[i],
+                       y_start[j]:y_end[j],
+                       1,
+                       1:3,
+                       drop = FALSE]
+      
+      ch1 <- mean(subim[,,,1])
+      ch2 <- mean(subim[,,,2])
+      ch3 <- mean(subim[,,,3])
+      
+      rescol <- get_closest_color(c(ch1, ch2, ch3), pal)
+      
+      finmat[(i - 1) * length(y_start) + j,] <- rescol
+    }
+  }
+  
+  # TODO: optimize this part
+  for (i in 1:length(x_start)) {
+    for (j in 1:length(y_start)) {
+      
+      index <- (i - 1) * length(y_start) + j
+      c_x <- x_start[i]:x_end[i]
+      c_y <- y_start[j]:y_end[j]
+      
+      finim[c_x, c_y, 1] <- finmat[index, 1]
+      finim[c_x, c_y, 2] <- finmat[index, 2]
+      finim[c_x, c_y, 3] <- finmat[index, 3]
+      
+    }
+  }
+  
+  dim(finim) <- c(width, height, 1, 3)
+  
+  as.cimg(finim)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

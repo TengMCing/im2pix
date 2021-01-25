@@ -1,0 +1,3 @@
+find_pal <- function(ori_im, num = 16) {
+  ori_im
+}

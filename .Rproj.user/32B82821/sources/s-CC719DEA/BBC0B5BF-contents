@@ -1,0 +1,10 @@
+file_names <- list.files("test")
+i <- 1
+for (filename in file_names) {
+  i <- i + 1
+  tim1 <- Sys.time()
+  imager::load.image(paste0("test/",filename)) -> test_pic
+  imtopix(test_pic, pal = "gameboy", blockSize = 1) -> out_pic
+  imager::save.image(out_pic, paste0("test/", i, "_out.png"))
+  print(Sys.time() - tim1)
+}

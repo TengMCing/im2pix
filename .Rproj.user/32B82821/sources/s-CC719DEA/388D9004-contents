@@ -1,0 +1,7 @@
+get_pal <- function(pal) {
+  pal_collection[[pal]]
+}
+
+
+
+
