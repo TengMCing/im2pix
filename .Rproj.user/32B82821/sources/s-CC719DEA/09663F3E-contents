@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # im2pix
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/TengMCing/im2pix/workflows/R-CMD-check/badge.svg)](https://github.com/TengMCing/im2pix/actions)
 <!-- badges: end -->
 
 im2pix is a tool to convert image to pseudo pixel art. It's a reduced version 
