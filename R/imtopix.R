@@ -1,3 +1,13 @@
+#' im2pix: A package for converting image to pseudo pixel art
+#'
+#' The foo package provides one important functions:
+#' imtopix
+#'
+#' @docType package
+#' @name im2pix
+NULL
+
+
 #' Convert Image to Pseudo Pixel Art
 #'
 #' Convert image to pseudo pixel art by reducing the resolution of the image and
