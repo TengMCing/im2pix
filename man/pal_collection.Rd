@@ -14,6 +14,9 @@ An object of class \code{list} of length 13.
 pal_collection
 }
 \description{
-A list containing 13 colour palettes representing in RGB format.
+A list containing 13 colour palettes representing in RGB format. Available
+palettes include "appleii", "atari2600", "commodore64", "contra", "gameboy",
+"grayscale", "hyrule", "intellivision", "kungfu", "mario", "nes", "sega",
+"tetris"
 }
 \keyword{datasets}

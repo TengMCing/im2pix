@@ -55,3 +55,10 @@ Using another palette
 out_pic <- imtopix(sample_im, pal = "gameboy", blockSize = 8)
 plot(out_pic)
 ```
+
+Available palettes include
+
+```{r}
+names(pal_collection)
+```
+

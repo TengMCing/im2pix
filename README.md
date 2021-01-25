@@ -9,20 +9,19 @@
 <!-- badges: end -->
 
 im2pix is a tool to convert image to pseudo pixel art. It’s a reduced
-version
+version of [Nathan Harper’s Python
+script](https://github.com/nathanharper/phixelgator).
 
 ## Installation
 
 You can install the released version of im2pix from
-[CRAN](https://CRAN.R-project.org) with:
+[GitHub](https://github.com/TengMCing/im2pix) with:
 
 ``` r
-install.packages("im2pix")
+devtools::install_github("TengMCing/im2pix")
 ```
 
 ## Example
-
-This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(im2pix)
@@ -44,14 +43,16 @@ library(imager)
 #>     save.image
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+The built-in image
 
 ``` r
 plot(sample_im)
 ```
 
 <img src="man/figures/README-cars-1.png" width="100%" />
+
+Covert the image to pseudo pixel art using palette “contra”. Increase
+the block size will decrease the output resolution.
 
 ``` r
 out_pic <- imtopix(sample_im, pal = "contra", blockSize = 8)
@@ -60,9 +61,21 @@ plot(out_pic)
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
+Using another palette
+
 ``` r
 out_pic <- imtopix(sample_im, pal = "gameboy", blockSize = 8)
 plot(out_pic)
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+
+Available palettes include
+
+``` r
+names(pal_collection)
+#>  [1] "appleii"       "atari2600"     "commodore64"   "contra"       
+#>  [5] "gameboy"       "grayscale"     "hyrule"        "intellivision"
+#>  [9] "kungfu"        "mario"         "nes"           "sega"         
+#> [13] "tetris"
+```
