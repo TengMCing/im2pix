@@ -1,6 +1,6 @@
 #' im2pix: A package for converting image to pseudo pixel art
 #'
-#' The foo package provides one important functions:
+#' The im2pix package provides one important functions:
 #' imtopix
 #'
 #' @docType package

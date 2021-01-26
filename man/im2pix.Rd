@@ -5,6 +5,6 @@
 \alias{im2pix}
 \title{im2pix: A package for converting image to pseudo pixel art}
 \description{
-The foo package provides one important functions:
+The im2pix package provides one important functions:
 imtopix
 }
