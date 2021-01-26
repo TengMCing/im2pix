@@ -101,6 +101,7 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">sample_im</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-cars-1.png" width="100%"></p>
 <p>Covert the image to pseudo pixel art using palette “contra”. Increase the block size will decrease the output resolution.</p>
+<p>The <code><a href="reference/imtopix.html">imtopix()</a></code> function only accepts <code>cimg</code> class object/image which can be loaded from disk by <code>imager::load.image(&lt;path_to_image&gt;)</code> or created from a matrix-like object by <code>imager::as.cimg(&lt;matrix-like_object&gt;)</code>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">out_pic</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/imtopix.html">imtopix</a></span><span class="op">(</span><span class="va">sample_im</span>, pal <span class="op">=</span> <span class="st">"contra"</span>, blockSize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">out_pic</span><span class="op">)</span></code></pre></div>

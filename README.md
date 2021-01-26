@@ -55,6 +55,11 @@ plot(sample_im)
 Covert the image to pseudo pixel art using palette “contra”. Increase
 the block size will decrease the output resolution.
 
+The `imtopix()` function only accepts `cimg` class object/image which
+can be loaded from disk by `imager::load.image(<path_to_image>)` or
+created from a matrix-like object by
+`imager::as.cimg(<matrix-like_object>)`.
+
 ``` r
 out_pic <- imtopix(sample_im, pal = "contra", blockSize = 8)
 plot(out_pic)
