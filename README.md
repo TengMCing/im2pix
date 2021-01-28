@@ -22,6 +22,24 @@ You can install the released version of im2pix from
 devtools::install_github("TengMCing/im2pix")
 ```
 
+### For macOS users
+
+This package heavily depends on the `imager` package. You may get an
+error like this when you run the `imtopix()` function or load the
+`imager` package on macOS.
+
+``` r
+Loading required package: imager
+Error in dyn.load(file, DLLpath = DLLpath, ...) : 
+  unable to load shared object '/Library/Frameworks/R.framework/Versions/3.3/Resources/library/imager/libs/imager.so':
+  dlopen(/Library/Frameworks/R.framework/Versions/3.3/Resources/library/imager/libs/imager.so, 6): Library not loaded: /opt/X11/lib/libX11.6.dylib
+  Referenced from: /Library/Frameworks/R.framework/Versions/3.3/Resources/library/imager/libs/imager.so
+  Reason: image not found
+```
+
+This is because you are missing `X11` so you need to install/reinstall
+the latest version of `XQuartz` (<https://www.xquartz.org/>).
+
 ## Example
 
 ``` r

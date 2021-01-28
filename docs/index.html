@@ -74,11 +74,23 @@
 <p>You can install the released version of im2pix from <a href="https://github.com/TengMCing/im2pix">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"TengMCing/im2pix"</span><span class="op">)</span></code></pre></div>
+<div id="for-macos-users" class="section level3">
+<h3 class="hasAnchor">
+<a href="#for-macos-users" class="anchor"></a>For macOS users</h3>
+<p>This package heavily depends on the <code>imager</code> package. You may get an error like this when you run the <code><a href="reference/imtopix.html">imtopix()</a></code> function or load the <code>imager</code> package on macOS.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>Loading required package<span class="op">:</span><span class="st"> </span>imager</span>
+<span id="cb2-2"><a href="#cb2-2"></a>Error <span class="cf">in</span> <span class="kw">dyn.load</span>(file, <span class="dt">DLLpath =</span> DLLpath, ...) <span class="op">:</span><span class="st"> </span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="st">  </span>unable to load shared object <span class="st">'/Library/Frameworks/R.framework/Versions/3.3/Resources/library/imager/libs/imager.so'</span><span class="op">:</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="st">  </span><span class="kw">dlopen</span>(<span class="op">/</span>Library<span class="op">/</span>Frameworks<span class="op">/</span>R.framework<span class="op">/</span>Versions<span class="op">/</span><span class="fl">3.3</span><span class="op">/</span>Resources<span class="op">/</span>library<span class="op">/</span>imager<span class="op">/</span>libs<span class="op">/</span>imager.so, <span class="dv">6</span>)<span class="op">:</span><span class="st"> </span>Library not loaded<span class="op">:</span><span class="st"> </span><span class="er">/</span>opt<span class="op">/</span>X11<span class="op">/</span>lib<span class="op">/</span>libX11.<span class="fl">6.</span>dylib</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  Referenced from<span class="op">:</span><span class="st"> </span><span class="er">/</span>Library<span class="op">/</span>Frameworks<span class="op">/</span>R.framework<span class="op">/</span>Versions<span class="op">/</span><span class="fl">3.3</span><span class="op">/</span>Resources<span class="op">/</span>library<span class="op">/</span>imager<span class="op">/</span>libs<span class="op">/</span>imager.so</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  Reason<span class="op">:</span><span class="st"> </span>image not found</span></code></pre></div>
+<p>This is because you are missing <code>X11</code> so you need to install/reinstall the latest version of <code>XQuartz</code> (<a href="https://www.xquartz.org/" class="uri">https://www.xquartz.org/</a>).</p>
+</div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">im2pix</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://dahtah.github.io/imager">imager</a></span><span class="op">)</span>
 <span class="co">#&gt; Loading required package: magrittr</span>
@@ -97,22 +109,22 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     save.image</span></code></pre></div>
 <p>The built-in image</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">sample_im</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-cars-1.png" width="100%"></p>
 <p>Covert the image to pseudo pixel art using palette “contra”. Increase the block size will decrease the output resolution.</p>
 <p>The <code><a href="reference/imtopix.html">imtopix()</a></code> function only accepts <code>cimg</code> class object/image which can be loaded from disk by <code>imager::load.image(&lt;path_to_image&gt;)</code> or created from a matrix-like object by <code>imager::as.cimg(&lt;matrix-like_object&gt;)</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">out_pic</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/imtopix.html">imtopix</a></span><span class="op">(</span><span class="va">sample_im</span>, pal <span class="op">=</span> <span class="st">"contra"</span>, blockSize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">out_pic</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%"></p>
 <p>Using another palette</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">out_pic</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/imtopix.html">imtopix</a></span><span class="op">(</span><span class="va">sample_im</span>, pal <span class="op">=</span> <span class="st">"gameboy"</span>, blockSize <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span><span class="op">(</span><span class="va">out_pic</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
 <p>Available palettes include</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">pal_collection</span><span class="op">)</span>
 <span class="co">#&gt;  [1] "appleii"       "atari2600"     "commodore64"   "contra"       </span>
 <span class="co">#&gt;  [5] "gameboy"       "grayscale"     "hyrule"        "intellivision"</span>
